@@ -6,5 +6,19 @@ public class Configuration {
     private String logLevel;
     private int maxConnections;
     private boolean debugMode;
+    private static final Configuration instance = new Configuration();
+
+    // constructor method 
+    private Configuration(){ 
+        // given default values 
+        appName = "ECS160-HW1"; 
+        logLevel = "INFO"; 
+        maxConnections = 32; 
+        debugMode = true; 
+    }
+
+    public static Configuration getInstance(){
+        return instance; 
+    }
 
 }

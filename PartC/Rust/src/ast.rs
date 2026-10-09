@@ -6,7 +6,17 @@ pub enum Expr {
     Div(Box<Expr>, Box<Expr>),
 }
 
-
+impl Expr {
+    pub fn eval(&self) -> i64 {
+        match self {
+            Expr::Num(n) => *n,
+            Expr::Add(l, r) => l.eval() + r.eval(),
+            Expr::Sub(l, r) => l.eval() - r.eval(),
+            Expr::Mult(l, r) => l.eval() * r.eval(),
+            Expr::Div(l, r) => l.eval() / r.eval(),
+        }
+    }
+}
 
 // Constructors that hide the Box::new calls when building trees.
 pub fn num(n: i64) -> Expr {
